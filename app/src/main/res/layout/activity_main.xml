@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+
+    tools:context="com.zhongqin.xiaoqinzushou.view.MainActivity">
+
+
+
+
+   <LinearLayout
+       android:layout_marginTop="40dip"
+       android:layout_marginLeft="50dip"
+       android:orientation="horizontal"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
+       <ImageView
+           android:background="@drawable/saaslogo"
+           android:layout_width="45dip"
+           android:layout_height="45dip" />
+       <TextView
+           android:text="SaaS家助手v1.0"
+           android:textSize="35dip"
+           android:layout_marginLeft="15dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+
+
+
+   </LinearLayout>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_gravity="center|center_vertical"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:id="@+id/guide"
+            android:layout_gravity="center"
+            android:layout_width="220dp"
+            android:focusable="true"
+            android:layout_weight="1"
+            android:layout_marginRight="70dp"
+            android:layout_height="400dp"
+
+            android:background="@drawable/values">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical|center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginBottom="120dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/guide"
+                    android:layout_gravity="center"
+                    android:focusable="true"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center"
+                    android:text="使用说明"
+                    android:textColor="#AEB9BA"
+
+                    android:textSize="30sp"
+
+                    />
+
+            </LinearLayout>
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/zhidengjiaju"
+            android:layout_width="220dp"
+            android:layout_marginRight="70dp"
+
+            android:layout_height="400dp"
+            android:focusable="true"
+            android:background="@drawable/values">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical|center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="154dp"
+                    android:layout_height="146dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="120dp"
+                    android:background="@drawable/detect"
+                    android:focusable="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center"
+                    android:text="智能家居"
+                    android:textColor="#AEB9BA"
+
+                    android:textSize="30sp"
+
+                    />
+
+            </LinearLayout>
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/checkupdata"
+            android:layout_width="220dp"
+            android:focusable="true"
+
+            android:layout_height="400dp"
+
+            android:background="@drawable/values">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical|center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginBottom="120dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/about"
+                    android:layout_gravity="center"
+                    android:focusable="true"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center"
+                    android:text="检查更新"
+                    android:textColor="#AEB9BA"
+
+                    android:textSize="30sp"
+
+                    />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
