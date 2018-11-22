@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#7EC0EE</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFFFFF</color>
+    <color name="gray_AE">#AEB9BA</color>
+    <color name="comm_grey">#efefef</color>
+    <color name="darkblue">#00008b</color> <!-- 暗蓝色 -->
+    <color name="blue">#009ACD</color> <!-- 蓝色 -->
+
+    <color name="c2">#4a4a4a</color>
+    <color name="c1">#2a2a2a</color>
+    <color name="c3">#9c9c9c</color>
+    <color name="c4">#444444</color>
 </resources>

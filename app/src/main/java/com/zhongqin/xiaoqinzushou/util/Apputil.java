@@ -2,6 +2,7 @@ package com.zhongqin.xiaoqinzushou.util;
 
 
 
+import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.content.pm.PackageManager;
 
 import com.zhongqin.xiaoqinzushou.model.AppInfo;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,37 +36,50 @@ public class Apputil {
     public void gotoapp(String input)
     {
 
-//        try {
-//            if (input.indexOf("我要打开") != -1) {
-//                need = input.substring(4);
-//                System.out.println("需要的字符串" + need);
-//
-//            } else if (input.indexOf("打开") != -1 && input.indexOf("我要") == -1) {
-//                need = input.substring(2);
-//                System.out.println("需要的字符串" + need);
-//
-//            } else {
-//                need = input;
-//                System.out.println("需要的字符串" + need);
-//            }
-//        }
-//        catch (Exception e){}
 
         for(int i=0;i<appList.size();i++)
         {
-
-
-
             if(input.equals(appList.get(i).appName))
             {
                 try {
                     intent = mContext.getPackageManager().getLaunchIntentForPackage(appList.get(i).packageName);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     mContext.startActivity(intent);
+                    break;
                 }
                 catch ( Exception e)
                 {
-                    ToastUtil.toast(mContext, appList.get(i).appName+"未下载");
+                    ToastUtil.toast(mContext, "未知错误");
+
+
+                }
+            }
+        }
+
+
+    }
+
+    public void closeapp(String input)
+    {
+
+
+        for(int i=0;i<appList.size();i++)
+        {
+
+            if(input.equals(appList.get(i).appName))
+            {
+                try {
+//                    intent = mContext.getPackageManager().getLaunchIntentForPackage(appList.get(i).packageName);
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    mContext.startActivity(intent);
+                    SuUtil suil=new SuUtil();
+                   suil.kill(appList.get(i).packageName);
+                    break;
+
+                }
+                catch ( Exception e)
+                {
+                    ToastUtil.toast(mContext, "未知错误");
 
 
                 }
@@ -81,8 +96,8 @@ public class Apputil {
         List<PackageInfo> packages = pm.getInstalledPackages(0);
         for (PackageInfo packageInfo : packages) {
             // 判断系统/非系统应用
-            if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) // 非系统应用
-            {
+//            if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) // 非系统应用
+//            {
                 System.out.println("MainActivity.getAppList, packageInfo=" + packageInfo.packageName);
                 AppInfo tmpInfo = new AppInfo();
                 tmpInfo.appName = packageInfo.applicationInfo.loadLabel(mContext.getPackageManager()).toString();
@@ -93,9 +108,9 @@ public class Apputil {
                 tmpInfo.appIcon = packageInfo.applicationInfo.loadIcon(mContext.getPackageManager());
                 appList.add(tmpInfo);
                 setAppList(appList);
-            } else {
-                // 系统应用
-            }
+//            } else {
+//                // 系统应用
+//            }
         }
 
     }

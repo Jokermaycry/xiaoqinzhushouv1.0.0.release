@@ -18,17 +18,13 @@
        android:orientation="horizontal"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content">
-       <ImageView
-           android:background="@drawable/saaslogo"
-           android:layout_width="45dip"
-           android:layout_height="45dip" />
-       <TextView
-           android:text="SaaS家助手v1.0"
-           android:textSize="35dip"
-           android:layout_marginLeft="15dp"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content" />
 
+
+        <TextView
+            android:textSize="46dp"
+            android:text="小秦助手"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
 
    </LinearLayout>
@@ -45,119 +41,40 @@
         <FrameLayout
             android:id="@+id/guide"
             android:layout_gravity="center"
-            android:layout_width="220dp"
+            android:layout_width="236.4dp"
             android:focusable="true"
             android:layout_weight="1"
             android:layout_marginRight="70dp"
-            android:layout_height="400dp"
+            android:layout_height="357.6dp"
 
-            android:background="@drawable/values">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_gravity="center_vertical|center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            android:background="@drawable/guideselector">
 
-                <ImageView
-                    android:layout_marginBottom="120dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/guide"
-                    android:layout_gravity="center"
-                    android:focusable="true"
-
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:text="使用说明"
-                    android:textColor="#AEB9BA"
-
-                    android:textSize="30sp"
-
-                    />
-
-            </LinearLayout>
 
         </FrameLayout>
         <FrameLayout
             android:layout_gravity="center"
             android:layout_weight="1"
             android:id="@+id/zhidengjiaju"
-            android:layout_width="220dp"
+            android:layout_width="236.4dp"
             android:layout_marginRight="70dp"
 
-            android:layout_height="400dp"
+            android:layout_height="357.6dp"
             android:focusable="true"
-            android:background="@drawable/values">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_gravity="center_vertical|center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            android:background="@drawable/smarthomeselector">
 
-                <ImageView
-                    android:layout_width="154dp"
-                    android:layout_height="146dp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="120dp"
-                    android:background="@drawable/detect"
-                    android:focusable="true" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:text="智能家居"
-                    android:textColor="#AEB9BA"
-
-                    android:textSize="30sp"
-
-                    />
-
-            </LinearLayout>
 
         </FrameLayout>
         <FrameLayout
             android:layout_gravity="center"
             android:layout_weight="1"
             android:id="@+id/checkupdata"
-            android:layout_width="220dp"
+            android:layout_width="236.4dp"
             android:focusable="true"
 
-            android:layout_height="400dp"
+            android:layout_height="357.6dp"
 
-            android:background="@drawable/values">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_gravity="center_vertical|center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            android:background="@drawable/updateselector">
 
-                <ImageView
-                    android:layout_marginBottom="120dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/about"
-                    android:layout_gravity="center"
-                    android:focusable="true"
-
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center"
-                    android:text="检查更新"
-                    android:textColor="#AEB9BA"
-
-                    android:textSize="30sp"
-
-                    />
-
-            </LinearLayout>
 
         </FrameLayout>
 

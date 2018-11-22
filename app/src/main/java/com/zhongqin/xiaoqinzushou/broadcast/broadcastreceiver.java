@@ -1,15 +1,17 @@
-package com.zhongqin.xiaoqinzushou.service;
+package com.zhongqin.xiaoqinzushou.broadcast;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 
 import com.alibaba.fastjson.JSON;
 import com.zhongqin.xiaoqinzushou.model.slotsbean;
 import com.zhongqin.xiaoqinzushou.util.Apputil;
 import com.zhongqin.xiaoqinzushou.util.Jiaoyutongutil;
+import com.zhongqin.xiaoqinzushou.util.SuUtil;
 import com.zhongqin.xiaoqinzushou.util.Tvchanelutil;
 import com.zhongqin.xiaoqinzushou.util.Tvcontrolutil;
 import com.zhongqin.xiaoqinzushou.view.MainActivity;
@@ -18,22 +20,34 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-public class myreceiver extends BroadcastReceiver {
+public class broadcastreceiver extends BroadcastReceiver {
 String command,data,input;
+
 
 
     @Override
     public void onReceive(Context context, Intent intent) {
 
         // TODO Auto-generated method stub
-        if(intent.getAction().equals("start.app"))
-        {
-            Intent start=new Intent(context,MainActivity.class);
-            context.startActivity(start);
-        }
+//        if(intent.getAction().equals("android.intent.action.BOOT_COMPLETED"))
+//        {
+//            Intent start=new Intent(context,MainActivity.class);
+//            start.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            context.startActivity(start);
+//            Toast.makeText(context,"我自启动成功了哈",Toast.LENGTH_LONG).show();
+//        }
 
         //asr文本
         if (intent.getAction().equals("aispeech.intent.action.ASRTHROUGH")) {
+                //唤醒
+                try {
+                    SuUtil su = new SuUtil();
+
+                    su.wakeup();
+                } catch (Exception e) {
+                }
+
+
             //透传给果谷
             try
             {
@@ -65,6 +79,8 @@ String command,data,input;
         if (intent.getAction().equals("aispeech.intent.action.DATATHROUGH")) {
             command = intent.getStringExtra("command");
             data = intent.getStringExtra("data");
+            Log.e("command", command);
+            Log.e("data", data);
             try {
                 //获取input
                 JSONObject jsonData = new JSONObject(data);
@@ -121,11 +137,17 @@ String command,data,input;
                     break;
                 //直播搜索+词库
                 case "qinjian.control.closedoor":
+//                    try {
+//                    Tvchanelutil tvm = new Tvchanelutil(context);
+//                    tvm.gotochanel(input);
+//                    }
+//                    catch (Exception e) {}
                     try {
-                    Tvchanelutil tvm = new Tvchanelutil(context);
-                    tvm.gotochanel(input);
+                        SuUtil su=new SuUtil();
+
+                        su.standby();
                     }
-                    catch (Exception e) {}
+                    catch (Exception e){}
                     break;
                 //关机
                 case "qinjian.control.closelight":
@@ -148,6 +170,18 @@ String command,data,input;
                     break;
 
                 case       "qinjian.control.openlight":
+                    try {
+                        Apputil a=new Apputil(context);
+                        a.setAppLists();
+                        a.closeapp(input);
+                    }
+                    catch (Exception e){}
+//                    try {
+//                        SuUtil su=new SuUtil();
+//
+//                        su.standby();
+//                    }
+//                    catch (Exception e){}
                     System.out.println("openlight");
                     break;
 

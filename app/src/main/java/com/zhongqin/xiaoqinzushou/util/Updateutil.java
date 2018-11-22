@@ -2,12 +2,9 @@ package com.zhongqin.xiaoqinzushou.util;
 
 
 
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -17,8 +14,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ProgressBar;
 
 import com.lidroid.xutils.HttpUtils;
@@ -28,6 +23,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.zhongqin.xiaoqinzushou.R;
+import com.zhongqin.xiaoqinzushou.view.SelfDialog;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -41,7 +37,7 @@ import java.util.HashMap;
 
 public class Updateutil {
     private String TAG = Updateutil.class.getSimpleName();
-
+     com.zhongqin.xiaoqinzushou.view.ProgressDialog builder;
     protected static HttpUtils mHttpUtils;
     /* 下载中 */
     private static final int DOWNLOAD = 1;
@@ -55,9 +51,10 @@ public class Updateutil {
     private int progress;
     /* 是否取消更新 */
     private boolean cancelUpdate = false;
+     ProgressDialog progressDialog;
 
-    private  String url="http://p60zhpu7n.bkt.clouddn.com/qinjian/xiaoqinzushou.xml";
-    private Context mContext;
+    private  String url="http://www.tuo-jiang.com/qinjian/xiaoqinzushou.xml";
+    private   Context mContext;
     /* 更新进度条 */
     private ProgressBar mProgress;
     private Dialog mDownloadDialog;
@@ -68,7 +65,7 @@ public class Updateutil {
                 // 正在下载
                 case DOWNLOAD:
                     // 设置进度条位置
-                    mProgress.setProgress(progress);
+                    builder.setProgress(progress);
                     break;
                 case DOWNLOAD_FINISH:
                     // 安装文件
@@ -139,7 +136,8 @@ public class Updateutil {
                 }
                 else
                 {
-                    showCurrentDialog();            }
+                    //showCurrentDialog();
+                }
             }
         }
     };
@@ -167,74 +165,63 @@ public class Updateutil {
      */
     private void showCurrentDialog() {
         // 构造对话框
-        AlertDialog.Builder builder = new Builder(mContext);
-        builder.setTitle(R.string.soft_update_no);
-        builder.setMessage(R.string.soft_current_info);
+         final SelfDialog builder3 = new SelfDialog(mContext);
+
+        builder3.setTitle("已经是最新版本");
+        builder3.setMessage(" ");
         //
         // 确认
-        builder.setNegativeButton(R.string.soft_yes, new OnClickListener() {
+        builder3.setYesOnclickListener("确定", new SelfDialog.onYesOnclickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+            public void onYesClick() {
+              builder3.dismiss();
             }
         });
-        Dialog noticeDialog = builder.create();
-        noticeDialog.show();
+
+        builder3.show();
     }
     /**
      * 显示软件更新对话框
      */
     private void showNoticeDialog() {
         // 构造对话框
-        AlertDialog.Builder builder = new Builder(mContext);
-        builder.setTitle(R.string.soft_update_title);
-        builder.setMessage(R.string.soft_update_info);
+        final SelfDialog builder1 = new SelfDialog(mContext);
+        builder1.setTitle("检测到最新版本");
+        builder1.setMessage(" ");
         // 更新
-        builder.setPositiveButton(R.string.soft_update_updatebtn, new OnClickListener() {
+        builder1.setYesOnclickListener("更新", new SelfDialog.onYesOnclickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+            public void onYesClick() {
+                builder1.dismiss();
                 // 显示下载对话框
                 showDownloadDialog();
             }
         });
         // 稍后更新
-        builder.setNegativeButton(R.string.soft_update_later, new OnClickListener() {
+        builder1.setNoOnclickListener("取消", new SelfDialog.onNoOnclickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+            public void onNoClick( ) {
+                builder1.dismiss();
             }
         });
-        Dialog noticeDialog = builder.create();
-        noticeDialog.show();
+        builder1.show();
     }
 
     /**
      * 显示软件下载对话框
      */
     private void showDownloadDialog() {
-        // 构造软件下载对话框
-        AlertDialog.Builder builder = new Builder(mContext);
-        builder.setTitle(R.string.soft_updating);
-        // 给下载对话框增加进度条
-        final LayoutInflater inflater = LayoutInflater.from(mContext);
-        View v = inflater.inflate(R.layout.softupdate_progress, null);
-        mProgress = (ProgressBar) v.findViewById(R.id.update_progress);
-        builder.setView(v);
-        // 取消更新
-        builder.setNegativeButton(R.string.soft_update_cancel, new OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                // 设置取消状态
-                cancelUpdate = true;
-            }
-        });
-        mDownloadDialog = builder.create();
-        mDownloadDialog.show();
-        // 现在文件
+         builder = new com.zhongqin.xiaoqinzushou.view.ProgressDialog(mContext);
+        builder.setProgressBarvisible(true);
+        builder.setTitle("正在下载");
+        // 更新
+
+        builder.show();
         downloadApk();
+
+
     }
+
 
     /**
      * 下载apk文件
@@ -304,7 +291,7 @@ public class Updateutil {
                 e.printStackTrace();
             }
             // 取消下载对话框显示
-            mDownloadDialog.dismiss();
+            builder.dismiss();
         }
     }
 
