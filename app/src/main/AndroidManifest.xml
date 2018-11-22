@@ -36,15 +36,27 @@
             android:name=".broadcast.broadcastreceiver"
             android:enabled="true"
             android:exported="true">
-            <intent-filter>
+            <intent-filter android:priority="2147483647">
                 <action android:name="aispeech.intent.action.DATATHROUGH" />
                 <action android:name="aispeech.intent.action.ASRTHROUGH" />
                 <action android:name="QinjianAction" />
+                <action android:name="a" />
+                <action android:name="b" />
+                <action android:name="c" />
+                <!--　　　　　　　　　-->
+                <!--<action android:name="android.intent.action.BOOT_COMPLETED" />-->
+                <!--<action android:name="android.media.AUDIO_BECOMING_NOISY"/>-->
+                <!--<action android:name="android.intent.action.TEST_GKP" />-->
 
-                　　　　　　　　　
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
 
+
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="com.qihoo.appstore.ACTION_DAEMON_CORE_SERVICE"/>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+                <action android:name="android.intent.action.PHONE_STATE"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </receiver>
 

@@ -12,6 +12,7 @@ import com.zhongqin.xiaoqinzushou.model.slotsbean;
 import com.zhongqin.xiaoqinzushou.util.Apputil;
 import com.zhongqin.xiaoqinzushou.util.Jiaoyutongutil;
 import com.zhongqin.xiaoqinzushou.util.SuUtil;
+import com.zhongqin.xiaoqinzushou.util.ToastUtil;
 import com.zhongqin.xiaoqinzushou.util.Tvchanelutil;
 import com.zhongqin.xiaoqinzushou.util.Tvcontrolutil;
 import com.zhongqin.xiaoqinzushou.view.MainActivity;
@@ -22,13 +23,14 @@ import java.util.List;
 
 public class broadcastreceiver extends BroadcastReceiver {
 String command,data,input;
+    String value;
 
-
+    String TAG = "testlog";
 
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        // TODO Auto-generated method stub
+// TODO Auto-generated method stub
 //        if(intent.getAction().equals("android.intent.action.BOOT_COMPLETED"))
 //        {
 //            Intent start=new Intent(context,MainActivity.class);
@@ -36,6 +38,9 @@ String command,data,input;
 //            context.startActivity(start);
 //            Toast.makeText(context,"我自启动成功了哈",Toast.LENGTH_LONG).show();
 //        }
+        Log.i(TAG, intent.getAction());
+
+        ToastUtil.showShort(context,intent.getAction());
 
         //asr文本
         if (intent.getAction().equals("aispeech.intent.action.ASRTHROUGH")) {
@@ -46,7 +51,6 @@ String command,data,input;
                     su.wakeup();
                 } catch (Exception e) {
                 }
-
 
             //透传给果谷
             try
@@ -102,15 +106,17 @@ String command,data,input;
                 //获取rawvalue
                 List<slotsbean> temp;
                 temp = JSON.parseArray(slots, slotsbean.class);
-                String value=temp.get(0).getValue();
-                System.out.println("wangweiming_rawvalue" + value);
+                for(int i=0;i<temp.size();i++)
+                {
+
+                     String name=temp.get(i).getName();
+                     if(name.equals("应用软件")){
+                         value=temp.get(i).getValue();
+                     }
+
+                }
                 input=value;
 
-
-
-
-//                JSONObject temp = new JSONObject(nlu);
-//                input = temp.optString("input");
 
             }
             catch (Exception e){}
@@ -257,10 +263,24 @@ String command,data,input;
                 case       "qinjian.control.closeSocket"://
                     System.out.println("closeSocket");
                     break;
-                case       "qinjian.control.openSettopbox"://机顶盒
+                case       "qinjian.control.openSettopbox"://我要听歌
+                    try {
+                        Apputil a=new Apputil(context);
+                        a.setAppLists();
+                        a.gotoapp("QQ音乐");
+                    }
+                    catch (Exception e){}
+
                     System.out.println("openSettopbox");
                     break;
-                case       "qinjian.control.closeSettopbox"://
+                case       "qinjian.control.closeSettopbox"://我要唱歌
+                    try {
+                        Apputil a=new Apputil(context);
+                        a.setAppLists();
+                        a.gotoapp("全民k歌");
+                    }
+                    catch (Exception e){}
+
                     System.out.println("closeSettopbox");
                     break;
                 case       "qinjian.control.openAirconditioner"://空调

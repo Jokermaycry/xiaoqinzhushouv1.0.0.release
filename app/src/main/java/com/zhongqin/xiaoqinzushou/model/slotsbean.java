@@ -3,6 +3,15 @@ package com.zhongqin.xiaoqinzushou.model;
 public class slotsbean {
     public  String rawvalue;
     public  String value;
+    public  String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getValue() {
         return value;
