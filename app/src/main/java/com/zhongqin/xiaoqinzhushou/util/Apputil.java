@@ -1,4 +1,4 @@
-package com.zhongqin.xiaoqinzushou.util;
+package com.zhongqin.xiaoqinzhushou.util;
 
 
 
@@ -10,7 +10,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-import com.zhongqin.xiaoqinzushou.model.AppInfo;
+import com.zhongqin.xiaoqinzhushou.model.AppInfo;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;

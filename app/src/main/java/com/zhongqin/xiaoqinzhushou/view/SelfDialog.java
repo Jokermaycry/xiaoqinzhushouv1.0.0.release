@@ -1,4 +1,4 @@
-package com.zhongqin.xiaoqinzushou.view;
+package com.zhongqin.xiaoqinzhushou.view;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.zhongqin.xiaoqinzushou.R;
+import com.zhongqin.xiaoqinzhushou.R;
 
 public class SelfDialog extends Dialog {
     private Button yes;//确定按钮

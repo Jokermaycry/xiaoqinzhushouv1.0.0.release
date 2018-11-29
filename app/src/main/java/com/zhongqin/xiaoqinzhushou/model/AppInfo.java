@@ -1,4 +1,4 @@
-package com.zhongqin.xiaoqinzushou.model;
+package com.zhongqin.xiaoqinzhushou.model;
 
 import android.graphics.drawable.Drawable;
 import android.util.Log;

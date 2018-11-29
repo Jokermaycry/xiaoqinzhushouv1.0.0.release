@@ -1,4 +1,4 @@
-package com.zhongqin.xiaoqinzushou.util;
+package com.zhongqin.xiaoqinzhushou.util;
 
 import android.util.Log;
 

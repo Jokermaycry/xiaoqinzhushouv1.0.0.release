@@ -1,4 +1,4 @@
-package com.zhongqin.xiaoqinzushou.model;
+package com.zhongqin.xiaoqinzhushou.model;
 
 public class slotsbean {
     public  String rawvalue;

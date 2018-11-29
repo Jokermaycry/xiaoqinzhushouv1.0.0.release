@@ -1,4 +1,4 @@
-package com.zhongqin.xiaoqinzushou.broadcast;
+package com.zhongqin.xiaoqinzhushou.broadcast;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -8,14 +8,16 @@ import android.widget.Toast;
 
 
 import com.alibaba.fastjson.JSON;
-import com.zhongqin.xiaoqinzushou.model.slotsbean;
-import com.zhongqin.xiaoqinzushou.util.Apputil;
-import com.zhongqin.xiaoqinzushou.util.Jiaoyutongutil;
-import com.zhongqin.xiaoqinzushou.util.SuUtil;
-import com.zhongqin.xiaoqinzushou.util.ToastUtil;
-import com.zhongqin.xiaoqinzushou.util.Tvchanelutil;
-import com.zhongqin.xiaoqinzushou.util.Tvcontrolutil;
-import com.zhongqin.xiaoqinzushou.view.MainActivity;
+import com.zhongqin.xiaoqinzhushou.model.slotsbean;
+import com.zhongqin.xiaoqinzhushou.util.Apputil;
+import com.zhongqin.xiaoqinzhushou.util.DanbeiVideoutil;
+import com.zhongqin.xiaoqinzhushou.util.Jiaoyutongutil;
+import com.zhongqin.xiaoqinzhushou.util.SuUtil;
+import com.zhongqin.xiaoqinzhushou.util.ToastUtil;
+import com.zhongqin.xiaoqinzhushou.util.Tvchanelutil;
+import com.zhongqin.xiaoqinzhushou.util.Tvcontrolutil;
+import com.zhongqin.xiaoqinzhushou.util.Zhishiyuanutil;
+import com.zhongqin.xiaoqinzhushou.view.MainActivity;
 
 import org.json.JSONObject;
 
@@ -24,33 +26,23 @@ import java.util.List;
 public class broadcastreceiver extends BroadcastReceiver {
 String command,data,input;
     String value;
-
+    String rawvalue;
     String TAG = "testlog";
-
+    Zhishiyuanutil z;
     @Override
     public void onReceive(Context context, Intent intent) {
 
-// TODO Auto-generated method stub
-//        if(intent.getAction().equals("android.intent.action.BOOT_COMPLETED"))
-//        {
-//            Intent start=new Intent(context,MainActivity.class);
-//            start.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            context.startActivity(start);
-//            Toast.makeText(context,"我自启动成功了哈",Toast.LENGTH_LONG).show();
-//        }
-        Log.i(TAG, intent.getAction());
-
-        ToastUtil.showShort(context,intent.getAction());
+        //ToastUtil.showShort(context,intent.getAction());
 
         //asr文本
         if (intent.getAction().equals("aispeech.intent.action.ASRTHROUGH")) {
-                //唤醒
-                try {
-                    SuUtil su = new SuUtil();
-
-                    su.wakeup();
-                } catch (Exception e) {
-                }
+//                //唤醒
+//                try {
+//                    SuUtil su = new SuUtil();
+//
+//                    su.wakeup();
+//                } catch (Exception e) {
+//                }
 
             //透传给果谷
             try
@@ -58,6 +50,43 @@ String command,data,input;
                 String context_input_text;
                 context_input_text=intent.getStringExtra("context.input.text");
                 Log.e("guogu.input.text", context_input_text);
+                //DanbeiVideoutil dbu=new DanbeiVideoutil(context);
+
+//                switch (context_input_text)
+//                {
+//                    case "我要看电影":
+//                        dbu.gotomovie();
+//                        break;
+//                    case "我要看动漫":
+//                        dbu.gotodongman();
+//                        break;
+//
+//                    case "我要看综艺":
+//                        dbu.gotozhongyi();
+//                        break;
+//
+//                    case "我要看MV":
+//                        dbu.gotomv();
+//                        break;
+//
+//                    case "我要看体育":
+//                        dbu.gototiyu();
+//                        break;
+//
+//                    case "我要看电视剧":
+//                        dbu.gotodianshiju();
+//                        break;
+//
+//                    case "我要看纪录片":
+//                        dbu.gotojilupian();
+//                        break;
+//
+//                    case "我要看少儿":
+//                        dbu.gotoshaoer();
+//                        break;
+//
+//                }
+
                 try {
                     Intent i1 = new Intent();
                     i1.putExtra("guogu", context_input_text);
@@ -106,15 +135,20 @@ String command,data,input;
                 //获取rawvalue
                 List<slotsbean> temp;
                 temp = JSON.parseArray(slots, slotsbean.class);
-                for(int i=0;i<temp.size();i++)
-                {
 
-                     String name=temp.get(i).getName();
-                     if(name.equals("应用软件")){
-                         value=temp.get(i).getValue();
-                     }
-
-                }
+//                for(int i=0;i<temp.size();i++)
+//                {
+//
+//                     String name=temp.get(i).getName();
+//                     if(name.equals("应用软件")){
+//                         value=temp.get(i).getValue();
+//                     }
+//
+//                }
+                value=temp.get(0).getValue();
+                rawvalue=temp.get(0).getRawvalue();
+                Log.e("frank",value);
+                Log.e("frank",rawvalue);
                 input=value;
 
 
@@ -157,24 +191,9 @@ String command,data,input;
                     break;
                 //关机
                 case "qinjian.control.closelight":
-//                    Log.e("wangweiming","here");
-//                    try {
-//                        Tvcontrolutil tvcm = new Tvcontrolutil(context);
-//                        switch (input)
-//                        {
-//                            case "开机":
-//                                tvcm.wakeup();
-//                                break;
-//                            case "关机":
-//                                tvcm.standby();
-//                                break;
-//
-//                        }
-//                        tvcm.shutDown();
-//                    }
-//                    catch (Exception e) {}
-                    break;
 
+                    break;
+                    //关闭应用
                 case       "qinjian.control.openlight":
                     try {
                         Apputil a=new Apputil(context);
@@ -182,39 +201,82 @@ String command,data,input;
                         a.closeapp(input);
                     }
                     catch (Exception e){}
-//                    try {
-//                        SuUtil su=new SuUtil();
-//
-//                        su.standby();
-//                    }
-//                    catch (Exception e){}
+
                     System.out.println("openlight");
                     break;
 
                 case      "qinjian.control.openwindow":
                     System.out.println("openwindow");
                     break;
-                case       "qinjian.control.closewindow"://
-                    System.out.println("closewindow");
+
+
+                case       "qinjian.control.closewindow":// //分享到微信orqq
+
+
+                    z=new Zhishiyuanutil(context);
+                    z.dosomething(0x010,rawvalue);
                     break;
-                case       "qinjian.control.openlcok"://锁
-                    System.out.println("openlcok");
+
+
+                case       "qinjian.control.openlcok":          //动作
+
+
+                     z=new Zhishiyuanutil(context);
+                    z.dosomething(Integer.parseInt(value),rawvalue);
                     break;
-                case        "qinjian.control.closelock"://
-                    System.out.println("closelock");
+
+                case        "qinjian.control.closelock":     //退出
+
+
+                     z=new Zhishiyuanutil(context);
+                    z.dosomething(0x007);
+
                     break;
-                case       "qinjian.control.openIntercalation"://排插
-                    System.out.println("openIntercalation");
+
+                case       "qinjian.control.openIntercalation":      //搜索课程
+
+                    z=new Zhishiyuanutil(context);
+                    z.dosomething(0x002,rawvalue);
+
                     break;
-                case       "qinjian.control.closeIntercalation"://
-                    System.out.println("closeIntercalation");
+
+                case       "qinjian.control.closeIntercalation"://切换
+
+
+                    z=new Zhishiyuanutil(context);
+                    z.dosomething(0x003,rawvalue);
+
                     break;
-                case       "qinjian.control.openProjector"://投影仪
-                    System.out.println("openProjector");
+
+                case       "qinjian.control.openProjector":////分享直播到微信orqq
+
+
+                    z=new Zhishiyuanutil(context);
+                    z.dosomething(0x115,rawvalue);
+
                     break;
+
+
+
+
+
+
+
+
+
+
+
                 case       "qinjian.control.closeProjector"://??????????????
                     System.out.println("closeProjector");
                     break;
+
+
+
+
+
+
+
+
                 case       "qinjian.control.openClothcurtain"://布帘
                     System.out.println("openClothcurtain");
                     break;
@@ -243,6 +305,13 @@ String command,data,input;
                     System.out.println("openFan");
                     break;
                 case       "qinjian.control.closeFan"://
+                    try {
+                    Tvchanelutil tvm = new Tvchanelutil(context);
+                    tvm.gotochanel(input);
+                    }
+                    catch (Exception e) {}
+
+
                     System.out.println("closeFan");
                     break;
                 case       "qinjian.control.opentelevision"://电视
@@ -264,23 +333,9 @@ String command,data,input;
                     System.out.println("closeSocket");
                     break;
                 case       "qinjian.control.openSettopbox"://我要听歌
-                    try {
-                        Apputil a=new Apputil(context);
-                        a.setAppLists();
-                        a.gotoapp("QQ音乐");
-                    }
-                    catch (Exception e){}
-
                     System.out.println("openSettopbox");
                     break;
                 case       "qinjian.control.closeSettopbox"://我要唱歌
-                    try {
-                        Apputil a=new Apputil(context);
-                        a.setAppLists();
-                        a.gotoapp("全民k歌");
-                    }
-                    catch (Exception e){}
-
                     System.out.println("closeSettopbox");
                     break;
                 case       "qinjian.control.openAirconditioner"://空调

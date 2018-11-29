@@ -1,4 +1,4 @@
-package com.zhongqin.xiaoqinzushou.util;
+package com.zhongqin.xiaoqinzhushou.util;
 
 
 
@@ -22,8 +22,8 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
-import com.zhongqin.xiaoqinzushou.R;
-import com.zhongqin.xiaoqinzushou.view.SelfDialog;
+import com.zhongqin.xiaoqinzhushou.R;
+import com.zhongqin.xiaoqinzhushou.view.SelfDialog;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -37,7 +37,7 @@ import java.util.HashMap;
 
 public class Updateutil {
     private String TAG = Updateutil.class.getSimpleName();
-     com.zhongqin.xiaoqinzushou.view.ProgressDialog builder;
+     com.zhongqin.xiaoqinzhushou.view.ProgressDialog builder;
     protected static HttpUtils mHttpUtils;
     /* 下载中 */
     private static final int DOWNLOAD = 1;
@@ -136,7 +136,7 @@ public class Updateutil {
                 }
                 else
                 {
-                    //showCurrentDialog();
+                    ToastUtil.showShort(mContext,"已经是最新版本");
                 }
             }
         }
@@ -211,7 +211,7 @@ public class Updateutil {
      * 显示软件下载对话框
      */
     private void showDownloadDialog() {
-         builder = new com.zhongqin.xiaoqinzushou.view.ProgressDialog(mContext);
+         builder = new com.zhongqin.xiaoqinzhushou.view.ProgressDialog(mContext);
         builder.setProgressBarvisible(true);
         builder.setTitle("正在下载");
         // 更新

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/background"
 
-    tools:context="com.zhongqin.xiaoqinzushou.view.MainActivity">
+    tools:context="com.zhongqin.xiaoqinzhushou.view.MainActivity">
 
 
 
@@ -79,5 +79,17 @@
         </FrameLayout>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="30dp"
+            android:text="v2.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
 
 </LinearLayout>

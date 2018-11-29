@@ -1,4 +1,4 @@
-package com.zhongqin.xiaoqinzushou.view;
+package com.zhongqin.xiaoqinzhushou.view;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -9,10 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
-import com.zhongqin.xiaoqinzushou.R;
-import com.zhongqin.xiaoqinzushou.broadcast.broadcastreceiver;
-import com.zhongqin.xiaoqinzushou.util.ToastUtil;
-import com.zhongqin.xiaoqinzushou.util.Updateutil;
+import com.zhongqin.xiaoqinzhushou.R;
+import com.zhongqin.xiaoqinzhushou.broadcast.broadcastreceiver;
+import com.zhongqin.xiaoqinzhushou.util.DanbeiVideoutil;
+import com.zhongqin.xiaoqinzhushou.util.ToastUtil;
+import com.zhongqin.xiaoqinzhushou.util.Updateutil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         intentFilter = new IntentFilter();
         registerReceiver(recevier, intentFilter);
         checkupdata();
+
 
 
     }

@@ -1,4 +1,4 @@
-package com.zhongqin.xiaoqinzushou.view;
+package com.zhongqin.xiaoqinzhushou.view;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.zhongqin.xiaoqinzushou.R;
+import com.zhongqin.xiaoqinzhushou.R;
 
 public class ProgressDialog extends Dialog {
 

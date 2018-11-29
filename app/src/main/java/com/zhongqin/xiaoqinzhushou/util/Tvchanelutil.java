@@ -1,11 +1,11 @@
-package com.zhongqin.xiaoqinzushou.util;
+package com.zhongqin.xiaoqinzhushou.util;
 
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
-import com.zhongqin.xiaoqinzushou.model.Tvbean;
+import com.zhongqin.xiaoqinzhushou.model.Tvbean;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,9 +1,9 @@
-package com.zhongqin.xiaoqinzushou.view;
+package com.zhongqin.xiaoqinzhushou.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.zhongqin.xiaoqinzushou.R;
+import com.zhongqin.xiaoqinzhushou.R;
 
 public class GuideActivity extends AppCompatActivity {
 

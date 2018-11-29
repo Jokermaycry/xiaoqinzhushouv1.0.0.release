@@ -1,4 +1,4 @@
-package com.zhongqin.xiaoqinzushou.service;
+package com.zhongqin.xiaoqinzhushou.service;
 
 import android.app.Service;
 import android.content.Intent;

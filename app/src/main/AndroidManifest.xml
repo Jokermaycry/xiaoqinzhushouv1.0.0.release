@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.zhongqin.xiaoqinzushou">
+    package="com.zhongqin.xiaoqinzhushou">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
@@ -40,9 +40,7 @@
                 <action android:name="aispeech.intent.action.DATATHROUGH" />
                 <action android:name="aispeech.intent.action.ASRTHROUGH" />
                 <action android:name="QinjianAction" />
-                <action android:name="a" />
-                <action android:name="b" />
-                <action android:name="c" />
+
                 <!--　　　　　　　　　-->
                 <!--<action android:name="android.intent.action.BOOT_COMPLETED" />-->
                 <!--<action android:name="android.media.AUDIO_BECOMING_NOISY"/>-->

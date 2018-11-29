@@ -1,4 +1,4 @@
-package com.zhongqin.xiaoqinzushou.util;
+package com.zhongqin.xiaoqinzhushou.util;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zhongqin.xiaoqinzushou.R;
+import com.zhongqin.xiaoqinzhushou.R;
 
 
 /**

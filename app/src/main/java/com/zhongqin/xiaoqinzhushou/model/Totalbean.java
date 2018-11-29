@@ -1,4 +1,4 @@
-package com.zhongqin.xiaoqinzushou.model;
+package com.zhongqin.xiaoqinzhushou.model;
 
 import java.util.List;
 
